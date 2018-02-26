@@ -10,6 +10,6 @@ public class HejVerden {
         System.out.println("Hej Verden!");
         System.out.println("Hvornår smager en Tuborg bedst?");
         System.out.println("Hvergang!");
-        return "Hej verden! <br/>Hvornår smager en Tuborg bedst?";
+        return "{text: 'Hej verden! <br/>Hvornår smager en Tuborg bedst?', svar: 'Hvergang'}";
     }
 }
