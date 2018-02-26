@@ -14,6 +14,7 @@ public class SyvtabelService {
 
     @GET
     public List<Integer> get7tabel() throws IOException {
+        System.out.println("SyvtabelService.get7tabel() kaldt");
         List<Integer> tabel = new ArrayList<>();
 
         for (int i = 1; i <= 10; i++) {

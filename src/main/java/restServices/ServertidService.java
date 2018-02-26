@@ -12,7 +12,8 @@ public class ServertidService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTime(){
+    public Response getServertid(){
+        System.out.println("servertidService.getServertid() kaldt");
         return Response.ok()
                 .entity("{\"servertid\":\"" +new Date().toString() + "\"}")
                 .build();

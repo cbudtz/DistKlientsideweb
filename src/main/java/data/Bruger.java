@@ -1,16 +1,14 @@
 package data;
 
-public class User {
+public class Bruger {
     private String brugernavnet;
 
-    public User() {
+    public Bruger() {
     }
 
-    public User(String brugernavnet, String name) {
+    public Bruger(String brugernavnet, String name) {
         this.brugernavnet = brugernavnet;
     }
-
-
 
     public String getBrugernavnet() {
         return brugernavnet;

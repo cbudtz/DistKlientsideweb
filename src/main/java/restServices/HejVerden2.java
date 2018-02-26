@@ -1,6 +1,6 @@
 package restServices;
 
-import data.ErrorMessage;
+import data.Fejlbesked;
 import javax.ws.rs.GET;
 
 import javax.ws.rs.POST;
@@ -15,17 +15,17 @@ public class HejVerden2 {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response checkAnswer(@QueryParam("svar") String svar) {
+    public Response tjekSvar(@QueryParam("svar") String svar) {
         System.out.println("svaret i HejVerden2 blev angivet til '" + svar + "'");
         if (svar==null) {
           return Response.status(Response.Status.BAD_REQUEST)
-                  .entity(new ErrorMessage("Du skal give parameteren 'svar' i URL'en"))
+                  .entity(new Fejlbesked("Du skal give parameteren 'svar' i URL'en"))
                   .build();
         }
 
         if (!svar.toLowerCase().startsWith("hvergang")) {
           return Response.status(Response.Status.BAD_REQUEST)
-                  .entity(new ErrorMessage("Beklager, '" + svar + "' er ikke korrekt."))
+                  .entity(new Fejlbesked("Beklager, '" + svar + "' er ikke korrekt."))
                   .build();
         }
 

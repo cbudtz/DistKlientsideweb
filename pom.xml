@@ -43,7 +43,7 @@
     </dependencies>
 
     <build>
-        <finalName>DistKlientside</finalName>
+        <finalName>DistKlientsideweb</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
