@@ -1,6 +1,22 @@
 
-function loadStartside(){
-    loadPageWithGetData("rest/time","startside.mustache");
+function loadStartside() {
+    // det følgende svarer til loadPageWithGetData("rest/time","startside.mustache"); men er inlinet her for overskueligheds skyld
+    fetch("rest/servertid").then(function(servertidBlob){ // Hent servertiden
+        console.log("Her kommer svar på rest/servertid");
+        console.log(servertidBlob);
+        servertidBlob.json().then(function(servertidJson) { // Konverter body til json
+            console.log(servertidJson);
+            //Hent mustache template
+            fetch("startside.mustache").then(function (startsideBlob) {
+                startsideBlob.text().then(function (startside) {
+                    var html = Mustache.render(startside, servertidJson); //Render siden hos klienten
+                    console.log("Her er rest-svaret flettet ind i skabelonen startside.mustache");
+                    console.log(html);
+                    document.getElementById("maincontainer").innerHTML = html; //Indsæt siden
+                });
+            });
+        });
+    });
 }
 
 function doLogin(){

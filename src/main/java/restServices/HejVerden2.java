@@ -1,23 +1,34 @@
 package restServices;
 
 import data.ErrorMessage;
+import javax.ws.rs.GET;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("hejverden2")
 public class HejVerden2 {
 
-    @POST
-    public Response checkAnswer(String svar) {
-        System.out.println("svaret i Hej Verden2 blev angivet til '" + svar + "'");
-        if (svar.toLowerCase().startsWith("hvergang")) {
-            return Response.ok().entity("Helt rigtigt!").build();
-        } else {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(new ErrorMessage("Beklager, '" + svar + "' er ikke korrekt."))
-                    .build();
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response checkAnswer(@QueryParam("svar") String svar) {
+        System.out.println("svaret i HejVerden2 blev angivet til '" + svar + "'");
+        if (svar==null) {
+          return Response.status(Response.Status.BAD_REQUEST)
+                  .entity(new ErrorMessage("Du skal give parameteren 'svar' i URL'en"))
+                  .build();
         }
+
+        if (!svar.toLowerCase().startsWith("hvergang")) {
+          return Response.status(Response.Status.BAD_REQUEST)
+                  .entity(new ErrorMessage("Beklager, '" + svar + "' er ikke korrekt."))
+                  .build();
+        }
+
+        return Response.ok().entity("Helt rigtigt!").build();
     }
 }

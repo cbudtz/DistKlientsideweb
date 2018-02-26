@@ -7,8 +7,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
 
-@Path("time")
-public class TimeService {
+@Path("servertid")
+public class ServertidService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

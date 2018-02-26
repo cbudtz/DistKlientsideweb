@@ -1,6 +1,6 @@
 
-function loadPageWithGetData(url, template){
-    fetch(url) // Hent data
+function loadPageWithGetData(restUrl, templateUrl) {
+    fetch(restUrl) // Hent data
         .then(function(res){
             console.log(res);
             if (res.status ===200) //forespørgslen gik godt
@@ -8,7 +8,7 @@ function loadPageWithGetData(url, template){
                 res.json() // Konverter body til json
                     .then(function (json) {
                         console.log(json);
-                        fetch(template).then(function (templateresp) { //Hent mustache template
+                        fetch(templateUrl).then(function (templateresp) { //Hent mustache template
                             templateresp.text().then(function (template) {
                                 var html = Mustache.render(template, json); //Render siden hos klienten
                                 console.log(html);
@@ -25,9 +25,9 @@ function loadPageWithGetData(url, template){
         });
 }
 
-function loadPageWithPostData(url, template, json){
+function loadPageWithPostData(restUrl, templateUrl, json){
     console.log(json);
-    fetch(url, {
+    fetch(restUrl, {
             method:'post',
             body:JSON.stringify(json),
             headers: {
@@ -41,7 +41,7 @@ function loadPageWithPostData(url, template, json){
                 res.json()
                     .then(function (json) {
                         console.log(json);
-                        fetch(template).then(function (templateresp) {
+                        fetch(templateUrl).then(function (templateresp) {
                             templateresp.text().then(function (template) {
                                 var html = Mustache.render(template, json);
                                 console.log(html);
@@ -58,8 +58,8 @@ function loadPageWithPostData(url, template, json){
         });
 }
 
-function loadPageWithDeleteData(url, template){
-    fetch(url, {method:'delete'})
+function loadPageWithDeleteData(restUrl, templateUrl){
+    fetch(restUrl, {method:'delete'})
         .then(function(res){
             console.log(res);
             if (res.status ===200)
@@ -67,7 +67,7 @@ function loadPageWithDeleteData(url, template){
                 res.json()
                     .then(function (json) {
                         console.log(json);
-                        fetch(template).then(function (templateresp) {
+                        fetch(templateUrl).then(function (templateresp) {
                             templateresp.text().then(function (template) {
                                 var html = Mustache.render(template, json);
                                 console.log(html);
