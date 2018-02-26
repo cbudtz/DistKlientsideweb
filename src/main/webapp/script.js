@@ -1,6 +1,5 @@
-//Fetches notes from server as a JSON array
 
-function loadLogin(){
+function loadStartside(){
     loadPageWithGetData("rest/time","startside.mustache");
 }
 
@@ -12,6 +11,7 @@ function doLogin(){
 }
 
 
+// Henter noter som et JSON array og viser det
 function loadNotes(){
     loadPageWithGetData("rest/noter","noter.mustache");
 
